@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>Hello from JavaScript!</TITLE>
+<script>
+  function hello() {
+    var result = window.confirm('Hello, world!?');
+    if (result) {}
+    document.write('Hello, world!');
+  }
+  function info(){
+    var result = prompt();
+    document.write(result);
+  }
+  function addNumbers() {
+     var num1 = parseFloat(document.getElementById('num1').value);
+     var num2 = parseFloat(document.getElementById('num2').value);
+     if (isNaN(num1) || isNaN(num2)) {
+       alert('Будь ласка, введіть дійсні числа.');
+     } else {
+       var sum = num1 + num2;
+       document.getElementById('result').innerHTML = 'Результат: ' + sum;
+     }
+   }
+  function bigger(){
+      var bnum1 = parseFloat(document.getElementById('bnum1').value);
+     var bnum2 = parseFloat(document.getElementById('bnum2').value);
+     if (isNaN(bnum1) || isNaN(bnum2)) {
+       alert('Будь ласка, введіть дійсні числа.');
+     } else if (bnum1 > bnum2) {
+       document.getElementById('bresult').innerHTML = 'Число 1 більше';
+     } else if (bnum1 < bnum2) {
+        document.getElementById('bresult').innerHTML = 'Число 2 більше';
+     } else{
+      document.getElementById('bresult').innerHTML = 'Числа рівні';
+     }
+  }
+  function findSeason() {
+      var monthNumber = parseInt(prompt('Введіть номер місяця (1-12):'));
+      var season;
+
+      if (monthNumber >= 1 && monthNumber <= 12) {
+        switch (Math.ceil(monthNumber / 3)) {
+          case 1:
+            season = 'Зима';
+            break;
+          case 2:
+            season = 'Весна';
+            break;
+          case 3:
+            season = 'Літо';
+            break;
+          case 4:
+            season = 'Осінь';
+            break;
+        }
+
+        alert('Пора року для місяця ' + monthNumber + ' - це ' + season);
+      } else {
+        alert('Неправильний номер місяця. Введіть число від 1 до 12.');
+      }
+    }
+    function showConfirmation() {
+      var result = confirm("Натисніть 'OK' або 'Відміна'");
+      
+      if (result) {
+        alert("Ви натиснули 'OK'");
+      } else {
+        alert("Ви натиснули 'Відміна'");
+      }
+    }
+    function getStudentInfo() {
+      var numberOfStudents = parseInt(prompt('Введіть кількість студентів у групі:'));
+      var studentList = '';
+
+      if (numberOfStudents > 0) {
+        for (var i = 1; i <= numberOfStudents; i++) {
+          var firstName = prompt('Введіть ім\'я студента ' + i + ':');
+          var lastName = prompt('Введіть прізвище студента ' + i + ':');
+          studentList += i + '. ' + lastName + ' ' + firstName + '<br>';
+        }
+
+        document.getElementById('studentList').innerHTML = studentList;
+      } else {
+        alert('Введіть коректну кількість студентів (більше 0).');
+      }
+    }
+    function getStudentInfo2() {
+      var studentList = '';
+
+      while (true) {
+        var firstName = prompt('Введіть ім\'я студента (або натисніть "Відміна" для завершення вводу):');
+        
+        if (firstName === null) {
+          break; // Вихід з циклу, якщо користувач натиснув "Відміна"
+        }
+
+        var lastName = prompt('Введіть прізвище студента:');
+        studentList += lastName + ' ' + firstName + '<br>';
+      }
+
+      if (studentList !== '') {
+        document.getElementById('studentList2').innerHTML = studentList;
+      } else {
+        alert('Ви не ввели жодного студента.');
+      }
+    }
+    function createMultiplicationTable() {
+      var table = '<table>';
+      
+      for (var i = 1; i <= 10; i++) {
+        table += '<tr>';
+        
+        for (var j = 1; j <= 10; j++) {
+          table += '<td>' + (i * j) + '</td>';
+        }
+        
+        table += '</tr>';
+      }
+      
+      table += '</table>';
+      
+      document.getElementById('multiplicationTable').innerHTML = table;
+    }
+   
+</script>
+</HEAD>
+<BODY BGCOLOR=white>
+<H1>JavaScript Test</H1>
+<HR>
+<label>3.1 Змініть приклад (лістинг 1.7) так, щоб діалогова панель виникала не при наведенні курсора миші, а при виборі посилання (подія onClick).<br></label>
+<button onClick="alert('Hello, world!'); ">Вивести повідомлення<br></button>
+<label>3.2 Змініть приклад так, щоб при наведенні курсора миші на посилання, виконувалася б процедура, що виводить у вікно браузера фразу "Hello, word"!.</label>
+<button onClick="document.write('Hello, world!');">Вивести повідомлення</button><br>
+<label>3.3 Напишіть скрипт, який спочатку виводить на екран діалогове вікно, а потім, після
+натиснення кнопки "ОК", у вікні браузеру пише фразу "Hello, world"!.</label>
+<button onClick="hello()">виводить діалогове вікно</button><br>
+<label>3.4Напишіть скрипт, який запрошує у користувача інформацію, а потім виводить її в
+діалоговому вікні. 3.5 Складіть документ так, щоб діалогове вікно для введення інформації пропонувалося тільки після наведення курсора миші на посилання, і введений користувачем текстовий рядок виводився б у вигляді діалогового вікна, або у
+вікно браузеру.</label><br>
+<button onmouseover="info()">3.4, 3.5</button><br>
+<label>3.6 Написати скрипт, що реалізовує складання двох чисел по клацанню на кнопці.<br></label>
+  <label for="num1">Число 1:</label>
+  <input type="text" id="num1"><br>
+  <label for="num2">Число 2:</label>
+  <input type="text" id="num2"><br>
+  <button onclick="addNumbers();">Склади</button>
+  <p id="result"></p>
+<label>3.7 Напишіть скрипт, який запитує два числа і виводить у вікні браузеру найбільше з них.<br></label>
+  <label for="bnum1">Число 1:</label>
+  <input type="text" id="bnum1"><br>
+  <label for="bnum2">Число 2:</label>
+  <input type="text" id="bnum2"><br>
+  <button onclick="bigger();">Знайти більше</button>
+  <p id="bresult"></p>
+  <label>3.8 Напишіть скрипт, який запитує номер місяця і виводить назву пори року.<br></label>
+  <button onclick="findSeason();">Знайти пору року</button><br>
+  <label>3.9 Напишіть скрипт, який відображує діалогове вікно з кнопками "Ок" і "Відміна" (функція confirm) і виводить у вікно браузеру повідомлення про те, яка з кнопок була натиснута (використовуйте конструкцію if(confirm("Повідомлення")) ..)<br></label>
+  <button onclick="showConfirmation();">Показати діалогове вікно</button><br>
+  <label>3.10 Напишіть скрипт, що запитує кількість учнів студентської групи і відповідно до цієї кількості - їх прізвища і імена. Прізвища і імена необхідно відобразити у вікні браузеру.</label><br>
+  <button onclick="getStudentInfo();">Ввести інформацію про студентів</button>
+  <div id="studentList"></div><br>
+  <label>3.11 Напишіть скрипт, який запитує прізвища і імена до тих пір, поки користувач у вікні введення не натисне кнопку "Відміна". Прізвища і імена необхідно відобразити у вікні браузеру.</label><br>
+  <button onclick="getStudentInfo2();">Ввести інформацію про студентів</button>
+  <div id="studentList2"></div>
+  <label>3.12 Напишіть скрипт, що виводить у вікно браузеру таблицю множення.</label><br>
+  <button onclick="createMultiplicationTable();">Створити таблицю множення</button>
+  <div id="multiplicationTable"></div>
+</BODY>
+</HTML>
